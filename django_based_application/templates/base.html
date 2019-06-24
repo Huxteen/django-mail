@@ -39,31 +39,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{% url 'home' %}" style="display: none;">
-                        <!-- <img src="{% static 'assets/images/logo.png' %}" alt="logo"> -->
-                        <a class="navbar-brand" style="display: none;" href="{% url 'home' %}"><i class="fas fa-thumbs-up" style="color: #1c89aa;"></i>&nbsp;<span style="color: #1c89aa;">Mail</span><span style="color: #00bf6f;">Seed</span></a>
-                    </a>
+                    <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-message" style="color: #1c89aa;"></i>&nbsp;<span style="color: #1c89aa;">Mail</span><span style="color: #00bf6f;">Seeder</span></a>
                 </div>
 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        {% if user.is_authenticated %}
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.email}} &nbsp;<i class="fa fa-angle-down"></i></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Profile</a></li
-                                    <li><a class="dropdown-item" href="javascript:{document.getElementById('js-logout').submit()}" onClick=""> Logout</a></li>
-                                </ul>
-                                <form id="js-logout" method="POST" action="{% url 'logout' %}">
-                                    {% csrf_token %}
-                                    <input type="hidden">
-                                </form>
-                            </li>
-                        {% else %}
-                            <li><a href="{% url 'mail_list' %}"">List</a></li>
-                            <li class="active"><a href="{% url 'add' %}">Create</a></li>
-                        {% endif %}
+                        <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="{% if request.path == '/list/' %}active{% endif %}"><a href="{% url 'mail_list' %}">List</a></li>
+                        <li class="{% if request.path == '/add/' %}active{% endif %}"><a href="{% url 'add' %}">add</a></li>
                     </ul>
                 </div>
             </div>
@@ -90,11 +73,7 @@
 {% block content %}
 
 {% endblock %}
-<section >
-    <div class="container" >
-          
-    </div>
-</section>
+
 
 
 
@@ -106,7 +85,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    &copy; 2019 <a target="_blank" href="{% url 'home' %}" style="color: #fff;" title="Good Health">Good Health</a>.
+                    &copy; 2019 <a target="_blank" href="{% url 'home' %}" style="color: #fff;" title="Good Health">Mail Seeder</a>.
                     All Rights Reserved.
                 </div>
             

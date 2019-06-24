@@ -7,9 +7,8 @@
 
 
 <div class="container">
-  <h2>Hello {{m.get_full_name|title}},</h2>
-  {{form.as_p}}
-  <p>A list of all your loan request and their status.</p> 
+  <h2>Howdy</h2>
+  <p>Welcome, a list of all our mail data.</p> 
 
   <table class="table table-bordered">
     <thead>
@@ -25,7 +24,7 @@
     <tbody>
     {% for list in mail_list %}
         <tr>
-            <td>{{my_loan.bank_name|title}}</td>
+            <td>{{ forloop.counter }}</td>
             <td>{{list.name|title}}</td>
             <td>{{list.email|capfirst}}</td>
         </tr>
