@@ -61,7 +61,7 @@
                                 </form>
                             </li>
                         {% else %}
-                            <li><a href="#">List</a></li>
+                            <li><a href="{% url 'mail_list' %}"">List</a></li>
                             <li class="active"><a href="{% url 'add' %}">Create</a></li>
                         {% endif %}
                     </ul>
