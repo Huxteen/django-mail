@@ -39,62 +39,31 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{% url 'home' %}">
+                    <a class="navbar-brand" href="{% url 'home' %}" style="display: none;">
                         <!-- <img src="{% static 'assets/images/logo.png' %}" alt="logo"> -->
-                        <a class="navbar-brand" href="{% url 'home' %}"><i class="fas fa-thumbs-up" style="color: #1c89aa;"></i>&nbsp;<span style="color: #1c89aa;">Mail</span><span style="color: #00bf6f;">Seed</span></a>
+                        <a class="navbar-brand" style="display: none;" href="{% url 'home' %}"><i class="fas fa-thumbs-up" style="color: #1c89aa;"></i>&nbsp;<span style="color: #1c89aa;">Mail</span><span style="color: #00bf6f;">Seed</span></a>
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">About Us</a></li>
-                        <li><a href="#">Our Solutions</a></li>
-                        <li><a href="#">Contacts</a></li>
-
+                        <li class="active"><a href="#">Home</a></li>
                         {% if user.is_authenticated %}
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboard &nbsp;<i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{% url 'medical_statistics' %}">Dashboard</a></li>
-                                {% comment %}
-                                    I think Doctors get sick also they should be able to create and view their medical report also 
-                                {% endcomment %}
-                                <li><a href="{% url 'create_medical_report' %}">Create Medical Report</a></li>
-                                <li><a href="{% url 'my_medical_report' %}">My Medical Report</a></li>
-                                {% if user.is_staff %}
-                                    <li><a href="{% url 'all_medical_report' %}">Patients Medical Report</a></li>
-                                    <li><a href="#">Saved Report</a></li>
-                                {% endif %}                            
-                                <li><a href="{% url 'medical_statistics' %}">Medical Statistic</a></li>
-                            </ul>
-                        </li>
-                    
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.email}} &nbsp;<i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Profile</a></li>
-                                <li><a href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="javascript:{document.getElementById('js-logout').submit()}" onClick=""> Logout</a></li>
-                            </ul>
-                            <form id="js-logout" method="POST" action="{% url 'logout' %}">
-                                {% csrf_token %}
-                                <input type="hidden">
-                            </form>
-                        </li>
-
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.email}} &nbsp;<i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Profile</a></li
+                                    <li><a class="dropdown-item" href="javascript:{document.getElementById('js-logout').submit()}" onClick=""> Logout</a></li>
+                                </ul>
+                                <form id="js-logout" method="POST" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden">
+                                </form>
+                            </li>
                         {% else %}
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Accounts&nbsp;<i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{% url 'login' %}">Login</a></li>
-                                <li><a href="{% url 'signup' %}">Register</a></li>
-                            </ul> 
-                        </li>
-                        
+                            <li><a href="#">List</a></li>
+                            <li class="active"><a href="{% url 'add' %}">Create</a></li>
                         {% endif %}
-            
                     </ul>
                 </div>
             </div>
@@ -132,7 +101,7 @@
 
 
  
-<div class="container-fluid">
+<div class="container-fluid" style="display: none;">
     <footer id="footer" class="midnight-blue">
         <div class="container">
             <div class="row">

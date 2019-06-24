@@ -1,8 +1,6 @@
 from django import forms
-from django.contrib.auth import get_user_model
-User = get_user_model()
 from django.forms import ModelForm
-from mail import models
+from . import models
 
 
 class CreateMailList(ModelForm):
@@ -11,8 +9,8 @@ class CreateMailList(ModelForm):
 
 
     class Meta:
-        model = MailList
-        fields = (  
+        model = models.MailList
+        fields = (
             'name', 
             'email',
         )
@@ -23,6 +21,6 @@ class CreateMailList(ModelForm):
         mail_list.name = (self.cleaned_data['name']).casefold()
         mail_list.email = self.cleaned_data['email'].casefold()
         if commit:
-            user.save()
+            mail_list.save()
 
         return mail_list

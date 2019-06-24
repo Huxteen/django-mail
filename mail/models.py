@@ -1,10 +1,8 @@
 from django.db import models
 from datetime import datetime
-from django.contrib.auth import get_user_model
-User = get_user_model()
 
 # Create your models here.
-# Model collect medical report from users
+# Model collect mail list from users
 class MailList(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
