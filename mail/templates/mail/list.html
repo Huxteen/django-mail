@@ -13,10 +13,9 @@
   <table class="table table-bordered">
     <thead>
         <tr class="table-active">
-            <td colspan="3" class="text-center"><strong>List of all data</strong></td>
+            <td colspan="3" class="text-center"><strong>List of all Name(s) and Email(s)</strong></td>
         </tr>
         <tr>
-            <th>No.</th>
             <th>Name</th>
             <th>Email</th>
         </tr>
@@ -24,7 +23,6 @@
     <tbody>
     {% for list in mail_list %}
         <tr>
-            <td>{{ forloop.counter }}</td>
             <td>{{list.name|title}}</td>
             <td>{{list.email|capfirst}}</td>
         </tr>
@@ -37,6 +35,25 @@
      
     </tbody>
   </table>
+
+
+    {% if is_paginated %}
+        <div class="row"><!--/.row-->
+            <div class="col-md-12 text-center">
+                <ul class="pagination pagination-lg">
+                    {% if page_obj.has_previous %}  
+                        <li><a href="?{{ page_request_var }}={{page_obj.previous_page_number}}"> {{ page_obj.previous_page_number}}</a></li>
+                    {% endif %}
+                        <li class="active"><a href="?{{ page_request_var }}={{ page_obj.number }}" >{{ page_obj.number }}</a></li>
+                    {% if page_obj.has_next %}
+                        <li><a href="?{{ page_request_var }}={{page_obj.next_page_number}}"> {{ page_obj.next_page_number}}</a></li>
+                    {% endif %}
+                </ul><!--/.pagination-->
+            </div>
+        </div>
+    {% endif %}
+
+
 </div>
 
 {% endblock %}

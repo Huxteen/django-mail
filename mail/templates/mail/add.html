@@ -5,7 +5,7 @@
 {% load static %}
 
 <div class="col-md-4 center-block mt-5 py-5 box-shadow login-container">
-    <div class="col-md-12 login-title">ADD DETAILS</div>
+    <div class="col-md-12 subscribe-title text-center">Hi, What's your name and email?</div>
 
     
     <!-- Django attribute to catch error or successful message dynamically -->
@@ -39,18 +39,23 @@
     
     <form method="POST" action="{% url 'add' %}" class="login-form">
         {% csrf_token %}
-        <div class="form-group">
-            <label for="exampleInputName">Name</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter Name">
-        </div>
+        <div class="col-md-12 subscribe-wrapper">
+            <div class="col-md-6 pad-md-5">
+                <div class="text-center">
+                    <label for="exampleInputName">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter Name">
+                </div>
+            </div>
 
-        <div class="form-group">
-            <label for="exampleInputEmail">Email address</label>
-            <input type="email" name="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Email Address">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <div class="col-md-6 pad-md-5">
+                <div class="text-center">
+                    <label for="exampleInputEmail">Email address</label>
+                    <input type="email" name="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Email Address">
+                </div>
+            </div>
         </div>
         
-        <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
+        <button type="submit" class="btn btn-primary center-block custom-primary">SUBSCRIBE</button>
     </form>
 </div>
 
